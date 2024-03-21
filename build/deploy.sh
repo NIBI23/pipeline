@@ -14,5 +14,5 @@ elif [[ $GIT_BRANCH == "origin/main" ]]; then
     
     docker tag app:pv1 nibin23/prod:latest
     docker login -u $dockerhubusername -p $dockerhubpassword
-    docker push your-dockerhub-username/prod-repo:latest
+    docker push nibin23/prod-repo:latest
 fi
