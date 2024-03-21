@@ -12,7 +12,7 @@ if [[ $GIT_BRANCH == "origin/dev" ]]; then
 elif [[ $GIT_BRANCH == "origin/main" ]]; then
     echo "Building and pushing Docker image to prod repository in Docker Hub..."
     
-    docker tag app:pv1 nibin23/prod:latest
+    docker tag app:v1 nibin23/prod:latest
     docker login -u $dockerhubusername -p $dockerhubpassword
     docker push nibin23/prod:latest
 fi
