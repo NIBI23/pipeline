@@ -5,4 +5,4 @@ TAG="vi"
 
 # Build Docker image
 
-docker build -t app:v1 -f build/Dockerfile
+docker build -t app:v1 -f /build/Dockerfile
