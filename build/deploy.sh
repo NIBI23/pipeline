@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if the event is a push to the dev branch
-if [ "$GITHUB_EVENT_NAME" == "push" ] && [ "$GITHUB_REF" == "refs/heads/dev" ]; then
+if [ "$GITHUB_REF" == "refs/heads/dev" ]; then
     echo "Building and pushing Docker image to dev repository in Docker Hub..."
     docker build -t app:dv1 .
     docker tag app:v1 nibin23/dev:latest
@@ -9,7 +9,7 @@ if [ "$GITHUB_EVENT_NAME" == "push" ] && [ "$GITHUB_REF" == "refs/heads/dev" ]; 
     docker push nibin23/dev:latest
 
 # Check if the event is a merge from dev to master
-elif [ "$GITHUB_EVENT_NAME" == "pull_request" ] && [ "$GITHUB_EVENT_ACTION" == "closed" ] && [ "$GITHUB_BASE_REF" == "dev" ] && [ "$GITHUB_HEAD_REF" == "master" ]; then
+elif [ "$GITHUB_HEAD_REF" == "master" ]; then
     echo "Building and pushing Docker image to prod repository in Docker Hub..."
     docker build -t app:pv1 .
     docker tag app:pv1 nibin23/prod:latest
