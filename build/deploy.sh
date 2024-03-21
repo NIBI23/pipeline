@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if the event is a push to the dev branch
-if [ "$GITHUB_REF" == "refs/heads/dev" ]; then
+if [[ $GIT_BRANCH == "origin/dev" ]]; then
     echo "Building and pushing Docker image to dev repository in Docker Hub..."
         
     docker tag app:v1 nibin23/dev:latest
@@ -9,7 +9,7 @@ if [ "$GITHUB_REF" == "refs/heads/dev" ]; then
     docker push nibin23/dev:latest
 
 # Check if the event is a merge from dev to master
-elif [ "$GITHUB_HEAD_REF" == "master" ]; then
+elif [[ $GIT_BRANCH == "origin/main" ]]; then
     echo "Building and pushing Docker image to prod repository in Docker Hub..."
     
     docker tag app:pv1 nibin23/prod:latest
