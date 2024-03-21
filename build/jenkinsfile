@@ -4,8 +4,8 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    sh 'chmod +x build/build.sh'
-                    sh './build/build.sh'
+                    sh 'chmod +x build.sh'
+                    sh './build.sh'
                 }
             }
         }
